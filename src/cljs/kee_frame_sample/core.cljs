@@ -13,7 +13,15 @@
             [kee-frame.core :as k]
             [kee-frame.error :as error]
             [kee-frame.event-logger :as event-logger]
-            [re-frame.core :as f :refer [subscribe]]))
+            [re-frame.core :as f :refer [subscribe]]
+            [taoensso.timbre :as t-log]))
+
+(comment
+  t-log/*config*
+  (t-log/info "foo")
+  (t-log/debug "foo")
+  (println "foo")
+  :rcf)
 
 (goog-define debug false)
 
@@ -54,7 +62,7 @@
 (s/def ::db-spec (s/keys :req-un [::drawer-open? ::leagues ::fixtures ::table ::live-matches ::ongoing-only?]))
 
 (defn render! []
-  (k/start! {:log                 {:level        :info
+  (k/start! {:log                 {:min-level        :debug
                                    :ns-blacklist ["kee-frame.event-logger"]}
              :route-change-event  :route-changed
              :global-interceptors [event-logger/interceptor]
