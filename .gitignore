@@ -16,3 +16,6 @@ pom.xml.asc
 /figwheel_server.log
 /kee-frame-sample.iml
 /.idea/
+node_modules/
+.shadow-cljs/
+.cpcache/

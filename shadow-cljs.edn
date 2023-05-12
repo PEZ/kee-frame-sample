@@ -1,10 +1,12 @@
-{:deps   true
+{:deps   {:aliases [:cljs]}
  :builds {:app {:target     :browser
                 :output-to  "resources/public/js/compiled/app.js"
                 :output-dir "resources/public/js/compiled/out"
                 :asset-path "/js/compiled/out"
                 :devtools   {:after-load kee-frame-sample.core/render!
                              :watch-dir  "resources/public/css"
-                             :preloads [hashp.core]}
+                             :preloads [hashp.core]
+                             :http-port 8000
+                             :http-root "resources/public"}
                 ;:compiler-options {:infer-externs true}
                 :modules    {:main {:init-fn kee-frame-sample.core/render!}}}}}
